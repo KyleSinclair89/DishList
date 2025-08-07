@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="DishListStyle.css">
+</head>
+<body>
+    <div id="my-id">
+        <header>
+            <img src="DishListLogo.png" alt="Dish List Logo" class="logo" width="150">
+            <h1>Breakfast Recipes</h1>
+        </header>
+        <nav>
+            <ul class="menu-item">
+                <li class="Home">
+                    <a href="DishListMain.html">Home</a>
+                </li>
+                <li class="Recipes">
+                    <a href="DishListRecipes.html">Recipes</a>
+                </li>
+                <li class="Lunch">
+                    <a href="Lunch_Rec.html">Lunch</a>
+                </li>
+                <li class="Dinner">
+                    <a href="Dinner_Rec.html">Dinner</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Container for displaying breakfast recipes -->
+    <div id="recipe-list" style="text-align: center;"></div>
+
+    <!-- Container for displaying selected recipe's ingredients -->
+    <div id="recipe-ingredients" style="text-align: center;"></div>
+
+    <script>
+        // JavaScript code to fetch and display recipes
+        const apiKey = "76d521cb8b1a470092db329c1ac612e9";
+        const endpoint = "https://api.spoonacular.com/recipes/complexSearch?type=breakfast"; // Complex Search type=breakfast
+
+        // Function to make the API fetch breakfast recipes
+        async function fetchRecipes() {
+            try {
+                const response = await fetch(`${endpoint}&apiKey=${apiKey}`);
+                const data = await response.json();
+                displayRecipes(data);
+            } catch (error) {
+                console.error("Error fetching recipes:", error);
+            }
+        }
+
+          // Function to display the recipes
+        function displayRecipes(data) {
+            const recipeList = document.getElementById("recipe-list");
+            data.results.forEach((recipe) => {
+                const recipeElement = document.createElement("div");
+                recipeElement.innerHTML = `
+                    <h2>${recipe.title}</h2>
+                    <a href="DishListIngredients.html?recipeId=${recipe.id}">
+                        <img src="${recipe.image}" alt="${recipe.title}" class="recipe-image">
+                    </a>
+                `;
+                recipeList.appendChild(recipeElement); // Adds new recipe element
+            });
+        }
+
+        // Load breakfast recipes on page load
+        window.onload = fetchRecipes;
+    </script>
+</body>
+</html>
+

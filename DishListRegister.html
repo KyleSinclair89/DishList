@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dish List | Food Pantry</title>
+    <link rel="stylesheet" type="text/css" href="DishListStyle.css">
+</head>
+<body>
+    <header>
+        <img src="DishListLogo.png" alt="Dish List Logo" class="logo" width="100">
+        <h1>Welcome to Dish List!</h1>
+        <p>Explore a wide range of delicious recipes.</p>
+    </header>
+
+    <nav>
+        <ul class="menu-item">
+            <li class="Recipes">
+                <a href="Recipe-page.html">Recipes</a>
+            </li>
+            <li class="About Us">
+                <a href="DishListAboutUs.html">About Us</a>
+            </li>
+            <li class="Login">
+                <a href="login.html">Login</a>
+            </li>
+            <li class="Register">
+                <a href="register.html">Register</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h2>Register</h2>
+        <form action="register.php" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+
+            <label for "password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <input type="submit" value="Register">
+
+            <p>Already have an account? <a href="login.html">Sign in here</a></p>
+
+            <p><a href="DishListMain.html">Return Home</a></p>
+        </form>
+    </div>
+</body>
+</html>
